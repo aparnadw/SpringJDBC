@@ -1,4 +1,4 @@
-package com.spring.jdbc;
+package com.spring.jdbc.entites;
 
 public class Student {
 	
@@ -10,7 +10,6 @@ public class Student {
 	
 	public Student() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Student(int id, String name, String city) {

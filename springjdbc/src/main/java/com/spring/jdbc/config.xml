@@ -8,14 +8,20 @@
  	http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- this is our beans -->
+	<!-- refer to driver class -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" name="ds">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/springjdbc" />
 		<property name="username" value="root" />
 		<property name="password" value="root1234" />
 	</bean>
-	<bean class="org.springframework.jdbc.core.JdbcTemplate" name="JdbcTemplate" p:dataSource-ref="ds" />
+	<bean class="org.springframework.jdbc.core.JdbcTemplate" 
+	name="JdbcTemplate" p:dataSource-ref="ds" />
 	<!-- 		<property name="dataSource">
 				<ref bean="ds" />
 			</property> -->
+			<!-- refer to driver DAO -->
+	<bean class="com.spring.jdbc.dao.StudentDaoImpl" name="studentDao">
+		<property name="jdbcTemplate" ref="JdbcTemplate"></property>
+	</bean>
 </beans>
