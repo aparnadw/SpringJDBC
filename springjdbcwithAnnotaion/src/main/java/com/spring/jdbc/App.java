@@ -3,6 +3,7 @@ package com.spring.jdbc;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.spring.jdbc.dao.StudentDao;
@@ -14,8 +15,8 @@ public class App
 
 	public static void main( String[] args )
     {
-        System.out.println( "With XML" );
-        context = new ClassPathXmlApplicationContext("com/spring/jdbc/config.xml");
+        System.out.println( "With Annotation" );
+        context = new AnnotationConfigApplicationContext(JdbcConfig.class);
         
         // DAO call
         StudentDao studentDao = context.getBean("studentDao", StudentDao.class);

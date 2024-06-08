@@ -20,4 +20,4 @@ DriverManagerDataSource
  	http://www.springframework.org/schema/context
  	http://www.springframework.org/schema/context/spring-context.xsd">
 
-    
+  # XML and annotation both Example  
