@@ -2,15 +2,18 @@ package com.spring.jdbc;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import com.spring.jdbc.dao.StudentDao;
-import com.spring.jdbc.dao.StudentDaoImpl;
+/*import com.spring.jdbc.dao.StudentDao;
+import com.spring.jdbc.dao.StudentDaoImpl;*/
 
 @Configuration
+@ComponentScan(basePackages = {"com.spring.jdbc.dao"})
 public class JdbcConfig {
 	
 	@Bean(name = {"ds"})
@@ -30,11 +33,10 @@ public class JdbcConfig {
 		 return jdbcTemplate; 
 	}
 	
-	@Bean(name = {"studentDao"})
-	public StudentDao getstudentDao() {
-		StudentDaoImpl studentDao= new StudentDaoImpl();
-		studentDao.setJdbcTemplate(getJdbcTemplate());
-		return studentDao;
-	}
-
+	/*
+	 * Using @@Autowired we don't need to add DAO class in config
+	 * @Bean(name = {"studentDao"}) public StudentDao getstudentDao() {
+	 * StudentDaoImpl studentDao= new StudentDaoImpl();
+	 * studentDao.setJdbcTemplate(getJdbcTemplate()); return studentDao; }
+	 */
 }
